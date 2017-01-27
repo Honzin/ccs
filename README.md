@@ -70,6 +70,8 @@ for trade in trades:
 # Orderbook #####################################
 orderbook = ccs.orderbook(stock, cur1, cur2)
 
+# Available atributes and methods
+
 for order in orderbook.asks():
   order.price()
   order.amount()
@@ -95,20 +97,4 @@ Supported stocks
     | Poloniex   |  https://poloniex.com/        |
     +------------+-------------------------------+
     
-    
-    ============ ============================
-    Stock        Link
-    ============ ============================
-    Bitfinex     https://www.bitfinex.com/
-    Bitstamp     https://www.bitstamp.net/
-    Bittrex      https://bittrex.com/
-    Btcc         https://www.btcc.com/
-    Btce         https://btc-e.com/
-    Bter         https://bter.com/
-    Cex.io       https://cex.io/
-    Kraken       https://www.kraken.com/
-    Okcoin.com   https://www.okcoin.com/
-    Okcoin.cn    https://www.okcoin.cn/
-    Poloniex     https://poloniex.com/
-    ============ ============================
-
+-----    
