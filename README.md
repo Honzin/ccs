@@ -70,6 +70,10 @@ for trade in trades:
 # Orderbook #####################################
 orderbook = ccs.orderbook(stock, cur1, cur2)
 
+for order in orderbook.asks():
+  order.price()
+  order.amount()
+
 ```
 
 Supported stocks
