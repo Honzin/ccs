@@ -6,10 +6,6 @@ Crypto currencies stocks (ccs) is Python package for communication with stocks w
 
 * unificated API build over basic API
 
-Supported stocks
-----------------
-
-List of supported stocks
 
 ============ ============================
 Stock        Link
