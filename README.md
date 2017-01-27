@@ -6,6 +6,26 @@ Crypto currencies stocks (ccs) is Python package for communication with stocks w
 
 * unificated API build over basic API
 
+Supported stocks
+----------------
+
+        +------------+-------------------------------+
+        | Stock      | Link                          |
+        +------------+-------------------------------+
+        | Bitfinex   |  https://www.bitfinex.com/    |
+        | Bitstamp   |  https://www.bitstamp.net/    |
+        | Bittrex    |  https://bittrex.com/         |
+        | Btcc       |  https://www.btcc.com/        |
+        | Btce       |  https://btc-e.com/           |
+        | Bter       |  https://bter.com/            |
+        | Cex.io     |  https://cex.io/              |
+        | Kraken     |  https://www.kraken.com/      |
+        | Okcoin.com |  https://www.okcoin.com/      |
+        | Okcoin.cn  |  https://www.okcoin.cn/       |
+        | Poloniex   |  https://poloniex.com/        |
+        +------------+-------------------------------+
+        
+
 Examples of using basic API
 ---------------------------
 ```python
@@ -77,24 +97,3 @@ for order in orderbook.asks():
   order.amount()
 
 ```
-
-Supported stocks
-----------------
-
-        +------------+-------------------------------+
-        | Stock      | Link                          |
-        +------------+-------------------------------+
-        | Bitfinex   |  https://www.bitfinex.com/    |
-        | Bitstamp   |  https://www.bitstamp.net/    |
-        | Bittrex    |  https://bittrex.com/         |
-        | Btcc       |  https://www.btcc.com/        |
-        | Btce       |  https://btc-e.com/           |
-        | Bter       |  https://bter.com/            |
-        | Cex.io     |  https://cex.io/              |
-        | Kraken     |  https://www.kraken.com/      |
-        | Okcoin.com |  https://www.okcoin.com/      |
-        | Okcoin.cn  |  https://www.okcoin.cn/       |
-        | Poloniex   |  https://poloniex.com/        |
-        +------------+-------------------------------+
-    
------    
