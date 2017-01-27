@@ -28,7 +28,7 @@ str_response = ccs.bitfinex.public.orderbook("btcusd")
 str_response = ccs.btce.public.depth("btc_usd")
 str_response = ccs.okcoincom.public.depth("btc_usd")
 ```
-Example of using unificated API
+Examples of using unificated API
 -------------------------------
 ```python
 import ccs
