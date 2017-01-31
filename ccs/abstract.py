@@ -71,9 +71,7 @@ class Base:
         return self._data
 
     def valid(self):
-        # TODO return True or False
-        # TODO UNIFICATED_
-        schema = self._cfg.schema[self.stock()]["UNIFICATED_" + self.method()]
+        schema = self._cfg.schema[self.stock()][constants.UNIFICATED + "_" + self.method()]
         jsonschema.validate(self._data, schema)
 
 ##################################################################################
@@ -169,7 +167,7 @@ class Ticker(Base):
 class Trades(Base):
     # REVERSE
     def __init__(self, raw, symbol=None):
-        self.cfg = core.Configuration()
+        self._cfg = core.Configuration()
         self._save(raw)
         self._load(raw)
         self._count = len(self._data)
@@ -219,11 +217,11 @@ class Trades(Base):
 
 class Trade(Base):
     def __init__(self, data, symbol=None):
-        self.cfg = core.Configuration()
+        self._cfg = core.Configuration()
         self._load(data)
         self._symbol = symbol
-        self._mapping = self.cfg.mapping[self.stock()][self.method()]
-        self._type_mapping = self.cfg.mapping[self.stock()][constants.TRADE_TYPE]
+        self._mapping = self._cfg.mapping[self.stock()][self.method()]
+        self._type_mapping = self._cfg.mapping[self.stock()][constants.TRADE_TYPE]
 
     def _load(self, data):
         self._data = data
@@ -280,10 +278,11 @@ class Trade(Base):
 
 
 class Order(Base):
-    def __init__(self, data):
-        self.cfg = core.Configuration()
+    def __init__(self, data, symbol=None):
+        self._cfg = core.Configuration()
         self.load(data)
-        self._mapping = self.cfg.mapping[self.stock()][self.method()]
+        self._symbol = symbol
+        self._mapping = self._cfg.mapping[self.stock()][self.method()]
 
     # def method(self):
     #     return self.__class__.__name__.lower()
@@ -315,11 +314,12 @@ class Order(Base):
 ##################################################################################
 
 class Orders(Base):
-    def __init__(self, data):
+    def __init__(self, data, symbol=None):
         # IMRPOVE
         # zvazit jestli to chci pro vsechny nebo staci jen nekde
-        self.cfg = core.Configuration()
+        self._cfg = core.Configuration()
         self.load(data)
+        self._symbol = symbol
 
     def load(self, data):
         self._data = data
@@ -331,7 +331,7 @@ class Orders(Base):
     #     return type(self).__module__.split(".")[1]
 
     def __getitem__(self, item):
-        return Order(self._data[item])
+        return Order(self._data[item], self._symbol)
 
     def __len__(self):
         return len(self._data)
@@ -355,15 +355,15 @@ class Orders(Base):
 class OrderBook(Base):
     # REVERSE
     def __init__(self, raw, symbol=None):
-        self.cfg = core.Configuration()
+        self._cfg = core.Configuration()
         self._symbol = symbol
         self._save(raw)
         self.load(raw)
         self.loadAsks()
         self.loadBids()
         # TODO
-        self._a = json.loads(raw)
-        self._type = constants.ORDER
+        #self._a = json.loads(raw)
+        #self._type = constants.ORDER
         # self._mapping = self.cfg.mapping[self._stock][self._type]
 
     def load(self, raw):
@@ -373,10 +373,10 @@ class OrderBook(Base):
     #     return self.__class__.__name__.lower()
 
     def loadAsks(self):
-        self._asks = Orders(self._data["asks"])
+        self._asks = Orders(self._data["asks"], self._symbol)
 
     def loadBids(self):
-        self._bids = Orders(self._data["bids"])
+        self._bids = Orders(self._data["bids"], self._symbol)
 
     # def saveraw(self, raw):
     #     if core.raw():

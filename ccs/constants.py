@@ -158,6 +158,8 @@ OKCOIN_SYMBOLS = ["btc_usd", "ltc_usd", "ltc_cny", "ltc_cny"]
 INFO = "info"
 TRADABLEASSETPAIRS = "tradableassetpairs"
 
+UNIFICATED = "unificated"
+
 UNIFICATED_TICKER = "unificated_ticker"
 UNIFICATED_TRADES = "unificated_trades"
 UNIFICATED_TRADE = "unificated_trade"
