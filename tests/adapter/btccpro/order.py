@@ -3,13 +3,13 @@ import ccs
 import time
 
 ####################################################################################################################
-# BITFINEX                                                                                                         #
+# BTCCPRO                                                                                                          #
 ####################################################################################################################
 
 class Valid(unittest.TestCase):
     def setUp(self):
-        self.stock = ccs.constants.BTCC
-        self.base = ccs.constants.BTC
+        self.stock = ccs.constants.BTCCPRO
+        self.base = ccs.constants.XBT
         self.quote = ccs.constants.CNY
         self.orderbook = ccs.orderbook(self.stock, self.base, self.quote)
         self.ordersA = self.orderbook.asks()
