@@ -80,8 +80,9 @@ MAPPING[constants.TRADE_TYPE] = {constants.BUY: "BUY", constants.SELL: "SELL"}
 
 MAPPING[constants.ORDERBOOK] = {constants.ASKS: 'sell', constants.BIDS: 'buy'}
 
-MAPPING[constants.ORDER] = {}
-default.complete(default.ORDER, MAPPING[constants.ORDER])
+MAPPING[constants.ORDER] = {constants.PRICE: "Rate", constants.AMOUNT: "Quantity"}
+
+#default.complete(default.ORDER, MAPPING[constants.ORDER])
 
 ##################################################################################
 # SCHEMA                                                                         #

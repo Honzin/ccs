@@ -19,6 +19,7 @@ import inspect
 from ... import core
 from ... import constants
 from . import response
+import sys
 
 # !! WARN This recover response from okcoin.
 # from ...okcoin.public import *

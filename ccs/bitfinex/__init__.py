@@ -34,25 +34,19 @@ class Adapter(abstract.Adapter):
     def ticker(cur1, cur2):
         symbol = Symbol(cur1, cur2)
         s = symbol.original()
-        t = public.response.Ticker(public.ticker(s), symbol)
-        t.valid()
-        return t
+        return public.response.Ticker(public.ticker(s), symbol)
 
     @staticmethod
     def trades(cur1, cur2, limit=None, direction=None):
         symbol = Symbol(cur1, cur2)
         s = symbol.original()
-        t = public.response.Trades(public.trades(s), symbol)
-        t.valid()
-        return t
+        return public.response.Trades(public.trades(s), symbol)
 
     @staticmethod
     def orderbook(cur1, cur2, limit=None):
         symbol = Symbol(cur1, cur2)
         s = symbol.original()
-        t = public.response.OrderBook(public.orderbook(s), symbol)
-        t.valid()
-        return t
+        return public.response.OrderBook(public.orderbook(s), symbol)
 
 
 # class Handler(abstract.Handler):

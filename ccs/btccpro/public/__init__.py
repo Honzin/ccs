@@ -25,7 +25,7 @@ from . import response
 # TICKER                                                                         #
 ##################################################################################
 
-def ticker(symbol="btccny"):
+def ticker(symbol="xbtcny"):
     """
         This function provide detailed data of give market. This informations offer high level overview of the current states on the market. It is actual price, best bids and asks etc.
 
@@ -63,7 +63,7 @@ def ticker(symbol="btccny"):
 
         :Example:
                 >>> import ccs
-                >>> response = ccs.btccpro.public.ticker("btccny")
+                >>> response = ccs.btccpro.public.ticker("xbtcny")
                 >>> print(response)
                 {
                     "ticker":
@@ -111,7 +111,7 @@ def ticker(symbol="btccny"):
 # TRADE HISTORY                                                                  #
 ##################################################################################
 
-def tradeHistory(symbol="btccny", limit=100, since=None, sincetype=None):
+def tradeHistory(symbol="xbtcny", limit=100, since=None, sincetype=None):
     """
         This function provide history of trades.
 
@@ -153,7 +153,7 @@ def tradeHistory(symbol="btccny", limit=100, since=None, sincetype=None):
 
         :Example:
                 >>> import ccs
-                >>> response = ccs.btccpro.public.tradeHistory("btccny")
+                >>> response = ccs.btccpro.public.tradeHistory("xbtcny")
                 >>> print(response)
                 [
                     {
@@ -216,7 +216,7 @@ def tradeHistory(symbol="btccny", limit=100, since=None, sincetype=None):
 # ORDERBOOK                                                                      #
 ##################################################################################
 
-def orderbook(symbol="btccny", limit=None):
+def orderbook(symbol="xbtcny", limit=None):
     """
         This function provide lists of orders for sell and buy.
 
@@ -258,7 +258,7 @@ def orderbook(symbol="btccny", limit=None):
 
         :Example:
                 >>> import ccs
-                >>> response = ccs.btccpro.public.orderbook("btccny")
+                >>> response = ccs.btccpro.public.orderbook("xbtcny")
                 >>> print(response)
                 {
                     "asks":

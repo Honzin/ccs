@@ -15,7 +15,7 @@ class Valid(unittest.TestCase):
         self.ordersA = self.orderbook.asks()
         self.ordersB = self.orderbook.bids()
         self.m = ccs.bitfinex.public.response
-        time.sleep(3)
+        # time.sleep(3)
 
     def testLen(self):
         self.assertIsInstance(len(self.ordersA), int)

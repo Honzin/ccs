@@ -70,9 +70,9 @@ class Base:
     def data(self):
         return self._data
 
-    def valid(self):
+    def valid(self, raw):
         schema = self._cfg.schema[self.stock()][constants.UNIFICATED + "_" + self.method()]
-        jsonschema.validate(self._data, schema)
+        jsonschema.validate(json.loads(raw), schema)
 
 ##################################################################################
 # TICKER                                                                         #
@@ -84,6 +84,7 @@ class Ticker(Base):
     """
     def __init__(self, raw, symbol=None):
         self._cfg = core.Configuration()
+        self.valid(raw)
         self._symbol = symbol
         self._save(raw)
         self._load(raw)
@@ -168,6 +169,7 @@ class Trades(Base):
     # REVERSE
     def __init__(self, raw, symbol=None):
         self._cfg = core.Configuration()
+        self.valid(raw)
         self._save(raw)
         self._load(raw)
         self._count = len(self._data)
@@ -356,6 +358,7 @@ class OrderBook(Base):
     # REVERSE
     def __init__(self, raw, symbol=None):
         self._cfg = core.Configuration()
+        self.valid(raw)
         self._symbol = symbol
         self._save(raw)
         self.load(raw)

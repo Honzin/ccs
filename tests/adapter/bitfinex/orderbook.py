@@ -14,7 +14,7 @@ class Valid(unittest.TestCase):
         self.quote = ccs.constants.USD
         self.orderbook = ccs.orderbook(self.stock, self.base, self.quote)
         self.m = ccs.bitfinex.public.response
-        time.sleep(3)
+        #time.sleep(3)
 
     def testAsks(self):
         self.assertIsInstance(self.orderbook.asks(), self.m.Orders)

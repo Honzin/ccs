@@ -30,25 +30,28 @@ class Symbol(abstract.Symbol):
     def original(self):
         return self.normalize(self._cur1) + '_' + self.normalize(self._cur2)
 
+    def unificated(self):
+        return self._cur1.lower() + ":" + self._cur2.lower()
+
 
 class Adapter(abstract.Adapter):
     @staticmethod
     def ticker(cur1, cur2):
         symbol = Symbol(cur1, cur2)
         s = symbol.original()
-        return public.response.Ticker(public.returnTicker(), s)
+        return public.response.Ticker(public.returnTicker(), symbol)
 
     @staticmethod
     def trades(cur1, cur2, limit=None, direction=None):
         symbol = Symbol(cur1, cur2)
         s = symbol.original()
-        return public.response.Trades(public.returnTradeHistory(s), s)
+        return public.response.Trades(public.returnTradeHistory(s), symbol)
 
     @staticmethod
     def orderbook(cur1, cur2, limit=None):
         symbol = Symbol(cur1, cur2)
         s = symbol.original()
-        return public.response.OrderBook(public.returnOrderBook(s), s)
+        return public.response.OrderBook(public.returnOrderBook(s), symbol)
 
 # class Handler(abstract.Handler):
 #     def _setAdapter(self):

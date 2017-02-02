@@ -13,7 +13,7 @@ class Valid(unittest.TestCase):
         self.quote = ccs.constants.USD
         self.trades = ccs.trades(self.stock, self.base, self.quote)
         self.m = ccs.bitfinex.public.response
-        time.sleep(3)
+        #time.sleep(3)
 
     def testLen(self):
         self.assertIsInstance(len(self.trades), int)

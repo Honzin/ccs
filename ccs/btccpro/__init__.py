@@ -20,7 +20,6 @@ __status__ = "Production"
 from . import public
 from .. import abstract
 
-# "btccny"
 
 class Symbol(abstract.Symbol):
     def original(self):
@@ -32,19 +31,19 @@ class Adapter(abstract.Adapter):
     def ticker(cur1, cur2):
         symbol = Symbol(cur1, cur2)
         s = symbol.original()
-        return public.response.Ticker(public.ticker(s), s)
+        return public.response.Ticker(public.ticker(s), symbol)
 
     @staticmethod
     def trades(cur1, cur2, limit=None, direction=None):
         symbol = Symbol(cur1, cur2)
         s = symbol.original()
-        return public.response.Trades(public.trades(s), s)
+        return public.response.Trades(public.tradeHistory(s), symbol)
 
     @staticmethod
     def orderbook(cur1, cur2, limit=None):
         symbol = Symbol(cur1, cur2)
         s = symbol.original()
-        return public.response.OrderBook(public.orderbook(s), s)
+        return public.response.OrderBook(public.orderbook(s), symbol)
 
 # class Handler(abstract.Handler):
 #     def _setAdapter(self):

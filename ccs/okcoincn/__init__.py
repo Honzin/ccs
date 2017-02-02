@@ -26,7 +26,7 @@ from . import configuration
 
 class Symbol(abstract.Symbol):
     def original(self):
-        return self.normalize(self._cur1) + self.normalize(self._cur2)
+        return self.normalize(self._cur1) + '_' + self.normalize(self._cur2)
 
 
 class Adapter(abstract.Adapter):
@@ -34,16 +34,17 @@ class Adapter(abstract.Adapter):
     def ticker(cur1, cur2):
         symbol = Symbol(cur1, cur2)
         s = symbol.original()
-        return public.response.Ticker(public.ticker(s), s)
+        t = public.response.Ticker(public.ticker(s), symbol)
+        return t
 
     @staticmethod
     def trades(cur1, cur2, limit=None, direction=None):
         symbol = Symbol(cur1, cur2)
         s = symbol.original()
-        return public.response.Trades(public.trades(s), s)
+        return public.response.Trades(public.trades(s), symbol)
 
     @staticmethod
     def orderbook(cur1, cur2, limit=None):
         symbol = Symbol(cur1, cur2)
         s = symbol.original()
-        return public.response.OrderBook(public.orderbook(s), s)
+        return public.response.OrderBook(public.depth(s), symbol)

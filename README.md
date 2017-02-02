@@ -8,7 +8,7 @@ Crypto currencies stocks (ccs) is Python package for communication with stocks w
       
 
 Examples of using basic API
----------------------------
+===========================
 ```python
 import ccs
 

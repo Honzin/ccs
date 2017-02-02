@@ -68,11 +68,11 @@ class Order(abstract.Order):
 
 class Orders(abstract.Orders):
     def __getitem__(self, item):
-        return Order(self._data[item])
+        return Order(self._data[item], self._symbol)
 
 class OrderBook(abstract.OrderBook):
     def loadAsks(self):
-        self._asks = Orders(self._data["result"][self.cfg.mapping[self.stock()][self.method()][constants.ASKS]])
+        self._asks = Orders(self._data["result"][self._cfg.mapping[self.stock()][self.method()][constants.ASKS]], self._symbol)
 
     def loadBids(self):
-        self._bids = Orders(self._data["result"][self.cfg.mapping[self.stock()][self.method()][constants.ASKS]])
+        self._bids = Orders(self._data["result"][self._cfg.mapping[self.stock()][self.method()][constants.ASKS]], self._symbol)

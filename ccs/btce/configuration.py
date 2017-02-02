@@ -125,10 +125,7 @@ SCHEMA[constants.UNIFICATED_TRADES] = {
             "type": "array",
             "items": SCHEMA[constants.UNIFICATED_TRADE]
         }
-    },
-    "additionalProperties": False,
-    "maxProperties": 1,
-    "minProperties": 1
+    }
 }
 
 SCHEMA["trades"] = SCHEMA[constants.UNIFICATED_TRADES]

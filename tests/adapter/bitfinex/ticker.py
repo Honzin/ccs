@@ -13,7 +13,7 @@ class Valid(unittest.TestCase):
         self.base = ccs.constants.BTC
         self.quote = ccs.constants.USD
         self.ticker = ccs.ticker(self.stock, self.base, self.quote)
-        time.sleep(3)
+        #time.sleep(3)
 
     def testLow(self):
         self.assertIsInstance(self.ticker.low(), float)

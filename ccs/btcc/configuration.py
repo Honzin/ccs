@@ -84,7 +84,7 @@ TIMESTAMP_PATTERN = '\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.*?'
 
 # TICKER #########################################################################
 
-SCHEMA[constants.UNIFICATED_TICKER] = {
+SCHEMA["ticker_detail"] = {
     "type": "object",
     "properties": {
         "buy":         {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
@@ -101,12 +101,14 @@ SCHEMA[constants.UNIFICATED_TICKER] = {
     "required": ["high", "low", "buy", "sell", "last", "vol", "date", "vwap", "prev_close", "open"]
 }
 
-SCHEMA["ticker"] = {
+SCHEMA[constants.UNIFICATED_TICKER] = {
     "type": "object",
     "properties": {
-        "ticker.*": SCHEMA[constants.UNIFICATED_TICKER],
+        "ticker.*": SCHEMA["ticker_detail"],
     }
 }
+
+SCHEMA["ticker"] = SCHEMA[constants.UNIFICATED_TICKER]
 
 # TRADES #########################################################################
 
@@ -152,25 +154,25 @@ SCHEMA["tradeHistory"] = SCHEMA[constants.UNIFICATED_TRADES]
 
 # ORDERBOOK #######################################################################
 
-SCHEMA[constants.ORDER] = {
+SCHEMA[constants.UNIFICATED_ORDER] = {
     "type": "array",
     "items":  {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN}
 }
 
-SCHEMA[constants.ORDERS] = {
+SCHEMA[constants.UNIFICATED_ORDERS] = {
     "type": "array",
-    "items": SCHEMA[constants.ORDER]
+    "items": SCHEMA[constants.UNIFICATED_ORDER]
 }
 
-SCHEMA[constants.ORDERBOOK] = {
+SCHEMA[constants.UNIFICATED_ORDERBOOK] = {
     "type": "object",
     "properties": {
         "date": {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
-        "asks": SCHEMA[constants.ORDERS],
-        "bids": SCHEMA[constants.ORDERS]
+        "asks": SCHEMA[constants.UNIFICATED_ORDERS],
+        "bids": SCHEMA[constants.UNIFICATED_ORDERS]
     },
     "required": ["asks", "bids", "date"]
 }
 
 # TODO do deepcopy for all stocks
-SCHEMA["orderbook"] = SCHEMA[constants.ORDERBOOK]
+SCHEMA["orderbook"] = SCHEMA[constants.UNIFICATED_ORDERBOOK]

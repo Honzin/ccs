@@ -59,14 +59,14 @@ class Order(abstract.Order):
 
 class Orders(abstract.Orders):
     def __getitem__(self, item):
-        return Order( self._data[item])
+        return Order( self._data[item], self._symbol)
 
 class OrderBook(abstract.OrderBook):
     def load(self, raw):
         self._data = next(iter(json.loads(raw).values()))
 
     def loadAsks(self):
-        self._asks = Orders( self._data["asks"])
+        self._asks = Orders( self._data["asks"], self._symbol)
 
     def loadBids(self):
-        self._bids = Orders( self._data["bids"])
+        self._bids = Orders( self._data["bids"], self._symbol)

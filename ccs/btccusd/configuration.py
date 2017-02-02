@@ -50,20 +50,27 @@ MAPPING = {}
 
 # TICKER #########################################################################
 
-MAPPING[constants.TICKER] = {constants.ASK: "buy",
-                             constants.BID: "sell",
-                             constants.VOLUME24H: "vol",
-                             constants.TIMESTAMP: "date"}
+MAPPING[constants.TICKER] = {constants.LOW: 'Low',
+                             constants.HIGH: 'High',
+                             constants.ASK: 'AskPrice',
+                             constants.BID: 'BidPrice',
+                             constants.LAST: 'Last',
+                             constants.VOLUME24H: 'Volume24H',
+                             constants.TIMESTAMP: 'Timestamp'}
 
 default.complete(default.TICKER, MAPPING[constants.TICKER])
 
 # TRADES #########################################################################
 
-MAPPING[constants.TRADE] = {constants.TIMESTAMP: "date"}
+MAPPING[constants.TRADE] = {constants.TID: "Id",
+                            constants.PRICE: "Price",
+                            constants.AMOUNT: "Quantity",
+                            constants.TYPE: "Side",
+                            constants.TIMESTAMP: "Timestamp"}
 
 default.complete(default.TRADE, MAPPING[constants.TRADE])
 
-MAPPING[constants.TRADE_TYPE] = {}
+MAPPING[constants.TRADE_TYPE] = {constants.BUY: "Buy", constants.SELL: "Sell"}
 
 # ORDERBOOK #######################################################################
 
@@ -83,32 +90,33 @@ TIMESTAMP_PATTERN = '\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.*?'
 
 # TICKER #########################################################################
 
+
 SCHEMA[constants.UNIFICATED_TICKER] = {
     "type": "object",
     "properties": {
-        "BidPrice":             {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
-        "AskPrice":             {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
-        "Open":                 {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
-        "High":                 {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
-        "Low":                  {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
-        "Last":                 {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
-        "LastQuantity":         {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
-        "PrevCls":              {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
-        "Volume":               {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
-        "Volume24H":            {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
-        "Timestamp":            {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
-        "ExecutionLimitDown":   {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
-        "ExecutionLimitUp":     {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN}
-      },
-      "required": ["BidPrice", "AskPrice", "Open", "High", "Low", "Last", "LastQuantity", "PrevCls", "Volume", "Volume24H", "Timestamp", "ExecutionLimitDown", "ExecutionLimitUp"]
-}
-
-SCHEMA["ticker"] = {
-    "type": "object",
-    "properties": {
-        "ticker.*": SCHEMA[constants.UNIFICATED_TICKER],
+        "ticker.*": {
+            "type": "object",
+            "properties": {
+                "BidPrice":             {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
+                "AskPrice":             {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
+                "Open":                 {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
+                "High":                 {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
+                "Low":                  {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
+                "Last":                 {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
+                "LastQuantity":         {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
+                "PrevCls":              {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
+                "Volume":               {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
+                "Volume24H":            {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
+                "Timestamp":            {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
+                "ExecutionLimitDown":   {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN},
+                "ExecutionLimitUp":     {"type": ["string", "number"], "pattern": constants.NUMBER_PATTERN}
+            },
+            "required": ["BidPrice", "AskPrice", "Open", "High", "Low", "Last", "LastQuantity", "PrevCls", "Volume", "Volume24H", "Timestamp", "ExecutionLimitDown", "ExecutionLimitUp"]
+        }
     }
 }
+
+SCHEMA["ticker"] = SCHEMA[constants.UNIFICATED_TICKER]
 
 # TRADE HISTORY #######################################################################
 

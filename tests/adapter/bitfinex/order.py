@@ -17,7 +17,7 @@ class Valid(unittest.TestCase):
         self.ordersB = self.orderbook.bids()
         self.orderB = self.ordersB[0]
         self.m = ccs.bitfinex.public.response
-        time.sleep(3)
+        # time.sleep(3)
 
     def testPrice(self):
         self.assertIsInstance(self.orderA.price(), float)
