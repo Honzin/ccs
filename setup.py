@@ -8,6 +8,6 @@ setup(
   author_email='xsedaj00@gmail.com',
   url='https://github.com/Honzin/ccs', # use the URL to the github repo
   download_url='https://github.com/peterldowns/mypackage/tarball/0.1', # I'll explain this in a second
-  keywords=['testing', 'logging', 'example'], # arbitrary keywords
+  keywords=['bitfinex', 'bitstamp', 'bittrex', "btcc", "btce", "bter", "cexio", "kraken", "okcoin", "poloniex", "api", "crypto", "coin", "stock", "market"], # arbitrary keywords
   classifiers=[],
 )
