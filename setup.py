@@ -19,7 +19,7 @@ packages = ["ccs",
 setup(
     name            = 'ccs',
     packages        = packages,
-    version         = '0.1',
+    version         = '0.1.1',
     description     = 'Crypto currencies stocks (ccs) is Python package for communication with stocks which are traiding with crypto currencies. ',
     author          = 'Jan Seda',
     author_email    = 'xsedaj00@gmail.com',
