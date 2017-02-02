@@ -15,7 +15,7 @@ class Valid(unittest.TestCase):
         self.trades = ccs.trades(self.stock, self.base, self.quote)
         self.trade = self.trades[0]
         self.types = [ccs.constants.BUY, ccs.constants.SELL, ccs.constants.UNDEFINED]
-        #time.sleep(3)
+        time.sleep(3)
 
 
     def testTid(self):
