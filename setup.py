@@ -27,7 +27,7 @@ packages = ["ccs",
             "ccs.okcoincn.public",
             "ccs.okcoincom",
             "ccs.okcoincom.public",
-            "ccs.poloniex"
+            "ccs.poloniex",
             "ccs.poloniex.public"
             ]
 setup(
