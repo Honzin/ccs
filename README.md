@@ -17,7 +17,7 @@ This package is part of pypi.  Command for instalation is:
 
 Documentation
 =============
-Full documentation is [here](cryptocurrenciesstocks.readthedocs.io).
+Full documentation is [here](http://cryptocurrenciesstocks.readthedocs.io).
 
 
 Examples of using basic API
