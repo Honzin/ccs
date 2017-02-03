@@ -36,6 +36,8 @@ CCS is Python package for communication with stocks which is traiding with crypt
    bitstamp
    bittrex
    btcc
+   btccpro
+   btccusd
    btce
    bter
    cexio

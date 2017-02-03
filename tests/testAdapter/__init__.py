@@ -3,6 +3,7 @@ from .testBitstamp import *
 from .testBittrex import *
 from .testBtcc import *
 from .testBtccpro import *
+from .testBtccusd import *
 from .testBtce import *
 from .testBter import *
 from .testCexio import *

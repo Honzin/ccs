@@ -5,7 +5,7 @@ Crypto currencies stocks (ccs) is Python package for communication with stocks w
 * basic stock's API
 
 * unificated API build over basic API
-      
+
 
 Examples of using basic API
 ===========================
@@ -29,7 +29,10 @@ str_response = ccs.btce.public.depth("btc_usd")
 str_response = ccs.okcoincom.public.depth("btc_usd")
 ```
 Examples of using unificated API
--------------------------------
+================================
+
+Unificated Ticker
+-----------------
 ```python
 import ccs
 
@@ -50,7 +53,12 @@ ticker.dt() # datetime
 ticker.volume24h()
 ticker.spread()
 str(ticker)
+```
 
+Unificated Trades
+-----------------
+
+```python
 # Trades #####################################
 trades = ccs.trades(stock, cur1, cur2)
 
@@ -67,7 +75,12 @@ for trade in trades:
   trade.timestamp()
   trade.dt()
 
+```
 
+Unificated Orderbook
+--------------------
+
+```python
 # Orderbook #####################################
 orderbook = ccs.orderbook(stock, cur1, cur2)
 
@@ -79,5 +92,31 @@ for order in orderbook.asks():
 
 ```
 
+Instalation
+===========
+
+This package is part of pypi.  Command for instalation is:
+
+::
+
+   $ pip intall ccs
 
 
+Supported stocks
+================
+
+============ ============================
+Stock        Link
+============ ============================
+Bitfinex     https://www.bitfinex.com/
+Bitstamp     https://www.bitstamp.net/
+Bittrex      https://bittrex.com/
+Btcc         https://www.btcc.com/
+Btce         https://btc-e.com/
+Bter         https://bter.com/
+Cex.io       https://cex.io/
+Kraken       https://www.kraken.com/
+Okcoin.com   https://www.okcoin.com/
+Okcoin.cn    https://www.okcoin.cn/
+Poloniex     https://poloniex.com/
+============ ============================
