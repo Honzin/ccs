@@ -1,10 +1,10 @@
-# Crypto Currencies Stocks  - under construction
+# Crypto Currencies Stocks
 
 Crypto currencies stocks (ccs) is Python package for communication with stocks which are traiding with crypto currencies. This library has two levels:
 
 * basic stock's API
 
-* unificated API build over basic API
+* unificated API (build over basic API)
 
 Instalation
 ===========
@@ -14,6 +14,10 @@ This package is part of pypi.  Command for instalation is:
 ```bash
     $ pip intall ccs
 ```
+
+Documentation
+=============
+Full documentation is [here](cryptocurrenciesstocks.readthedocs.io).
 
 
 Examples of using basic API
