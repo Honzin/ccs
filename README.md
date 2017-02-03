@@ -17,7 +17,7 @@ This package is part of pypi.  Command for instalation is:
 
 Documentation
 =============
-Full documentation is [here](http://cryptocurrenciesstocks.readthedocs.io).
+Full documentation is [here](http://cryptocurrenciesstocks.readthedocs.io). This documentation is still under construction.
 
 
 Examples of using basic API
@@ -29,6 +29,7 @@ Tickers
 str_response = ccs.bitfinex.public.ticker("btcusd")
 str_response = ccs.bittrex.public.getMarketSummary("btc-ltc")
 str_response = ccs.cexio.public.ticker("BTC", "USD")
+# ...
 ```
 
 Trades
@@ -37,6 +38,7 @@ Trades
 str_response = ccs.bitfinex.public.trades("btcusd")
 str_response = ccs.bitstamp.public.transactions("btcusd")
 str_response = ccs.kraken.public.getRecentTrades("XBTEUR")
+# ...
 ```
 
 Orderbook
@@ -45,6 +47,7 @@ Orderbook
 str_response = ccs.bitfinex.public.orderbook("btcusd")
 str_response = ccs.btce.public.depth("btc_usd")
 str_response = ccs.okcoincom.public.depth("btc_usd")
+# ...
 ```
 Examples of using unificated API
 ================================
