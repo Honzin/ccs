@@ -107,9 +107,9 @@ Instalation
 
 This package is part of pypi.  Command for instalation is:
 
-::
+```bash
     $ pip intall ccs
-
+```
 
 
 Supported stocks
