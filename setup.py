@@ -59,6 +59,7 @@ setup(
     author_email    = 'xsedaj00@gmail.com',
     url             = 'https://github.com/Honzin/ccs',
     download_url    = 'https://github.com/Honzin/ccs/tarball/0.1.5',
+    install_requires=["jsonschema"],
     keywords        = ['bitfinex', 'bitstamp', 'bittrex', "btcc", "btce", "bter", "cexio", "kraken", "okcoin", "poloniex", "api", "crypto", "coin", "stock", "market", "unification"],
     classifiers     = classifiers,
 )
