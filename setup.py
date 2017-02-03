@@ -54,7 +54,7 @@ setup(
     name            = 'ccs',
     packages        = packages,
     version         = '0.1.5',
-    description     = 'Crypto currencies stocks (ccs) is Python package for communication with stocks which are traiding with crypto currencies. Documentation is placed  ',
+    description     = 'Crypto currencies stocks (ccs) is Python package for communication with stocks which are traiding with crypto currencies. Documentation is placed  http://cryptocurrenciesstocks.readthedocs.io',
     author          = 'Jan Seda',
     author_email    = 'xsedaj00@gmail.com',
     url             = 'https://github.com/Honzin/ccs',
