@@ -9,6 +9,9 @@ Crypto currencies stocks (ccs) is Python package for communication with stocks w
 
 Examples of using basic API
 ===========================
+
+Tickers
+-------
 ```python
 import ccs
 
@@ -16,13 +19,20 @@ import ccs
 str_response = ccs.bitfinex.public.ticker("btcusd")
 str_response = ccs.bittrex.public.getMarketSummary("btc-ltc")
 str_response = ccs.cexio.public.ticker("BTC", "USD")
+```
 
-
+Trades
+------
+```python
 # Trades #####################################
 str_response = ccs.bitfinex.public.trades("btcusd")
 str_response = ccs.bitstamp.public.transactions("btcusd")
 str_response = ccs.kraken.public.getRecentTrades("XBTEUR")
+```
 
+Orderbook
+---------
+```python
 # Orderbook #####################################
 str_response = ccs.bitfinex.public.orderbook("btcusd")
 str_response = ccs.btce.public.depth("btc_usd")
