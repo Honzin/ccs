@@ -25,7 +25,7 @@ from . import response
 # TICKER                                                                         #
 ##################################################################################
 
-def ticker(symbol="btcusd"):
+def ticker(symbol="BTCUSD"):
     """
         This function provide detailed data of give market. This informations offer high level overview of the current states on the market. It is actual price, best bids and asks etc.
 
@@ -63,7 +63,7 @@ def ticker(symbol="btcusd"):
 
         :Example:
                 >>> import ccs
-                >>> response = ccs.btccusd.public.ticker("btcusd")
+                >>> response = ccs.btccusd.public.ticker("BTCUSD")
                 >>> print(response)
                 {
                     "ticker":
@@ -111,7 +111,7 @@ def ticker(symbol="btcusd"):
 # TRADE HISTORY                                                                  #
 ##################################################################################
 
-def tradeHistory(symbol="btcusd", limit=100, since=None, sincetype=None):
+def tradeHistory(symbol="BTCUSD", limit=100, since=None, sincetype=None):
     """
         This function provide history of trades.
 
@@ -153,7 +153,7 @@ def tradeHistory(symbol="btcusd", limit=100, since=None, sincetype=None):
 
         :Example:
                 >>> import ccs
-                >>> response = ccs.btccusd.public.tradeHistory("btcusd")
+                >>> response = ccs.btccusd.public.tradeHistory("BTCUSD")
                 >>> print(response)
                 [
                     {
@@ -167,10 +167,10 @@ def tradeHistory(symbol="btcusd", limit=100, since=None, sincetype=None):
                 ]
                 >>>
                 >>> # Other examples of using
-                >>> ccs.btccusd.public.tradeHistory("btcusd", limit=10)
-                >>> ccs.btccusd.public.tradeHistory("btcusd", since=7000)
-                >>> ccs.btccusd.public.tradeHistory("btcusd", since=1484396000, sincetype="time")
-                >>> ccs.btccusd.public.tradeHistory("btcusd", 10, 1484396000, "time")
+                >>> ccs.btccusd.public.tradeHistory("BTCUSD", limit=10)
+                >>> ccs.btccusd.public.tradeHistory("BTCUSD", since=7000)
+                >>> ccs.btccusd.public.tradeHistory("BTCUSD", since=1484396000, sincetype="time")
+                >>> ccs.btccusd.public.tradeHistory("BTCUSD", 10, 1484396000, "time")
                 >>>
                 >>> # Prepared validation schema
                 >>> schema = ccs.cfg.schema[ccs.constants.BTCCUSD]["tradeHistory"]
@@ -181,15 +181,15 @@ def tradeHistory(symbol="btcusd", limit=100, since=None, sincetype=None):
 
                 Example of GET request:
 
-                * https://spotusd-data.btcc.com/data/pro/historydata?symbol=btcusd
+                * https://spotusd-data.btcc.com/data/pro/historydata?symbol=BTCUSD
 
-                * https://spotusd-data.btcc.com/data/pro/historydata?symbol=btcusd&limit=10
+                * https://spotusd-data.btcc.com/data/pro/historydata?symbol=BTCUSD&limit=10
 
-                * https://spotusd-data.btcc.com/data/pro/historydata?symbol=btcusd&since=10
+                * https://spotusd-data.btcc.com/data/pro/historydata?symbol=BTCUSD&since=10
 
-                * https://spotusd-data.btcc.com/data/pro/historydata?symbol=btcusd&since=10&limit=10
+                * https://spotusd-data.btcc.com/data/pro/historydata?symbol=BTCUSD&since=10&limit=10
 
-                * https://spotusd-data.btcc.com/data/pro/historydata?symbol=btcusd&since=1456757387645&limit=10&sincetype=time
+                * https://spotusd-data.btcc.com/data/pro/historydata?symbol=BTCUSD&since=1456757387645&limit=10&sincetype=time
     """
     s = __name__.split(".")[1]  # stock name
     r = sys._getframe().f_code.co_name  # request name is same as name of function
@@ -216,7 +216,7 @@ def tradeHistory(symbol="btcusd", limit=100, since=None, sincetype=None):
 # ORDERBOOK                                                                      #
 ##################################################################################
 
-def orderbook(symbol="btcusd", limit=None):
+def orderbook(symbol="BTCUSD", limit=None):
     """
         This function provide lists of orders for sell and buy.
 
@@ -258,7 +258,7 @@ def orderbook(symbol="btcusd", limit=None):
 
         :Example:
                 >>> import ccs
-                >>> response = ccs.btccusd.public.orderbook("btcusd")
+                >>> response = ccs.btccusd.public.orderbook("BTCUSD")
                 >>> print(response)
                 {
                     "asks":

@@ -8,9 +8,13 @@ import datetime
 
 class Valid(unittest.TestCase):
     def setUp(self):
+        self.stock = ccs.constants.BTCCUSD
+        self.base = ccs.constants.BTC
+        self.quote = ccs.constants.USD
+        symbol = ccs.btccusd.Symbol(self.base, self.quote)
+
         self.tz = datetime.timezone.utc
         self.json = '{"ticker":{"BidPrice":980.01,"AskPrice":1028.99,"Open":989.52,"High":1045,"Low":940,"Last":1028.99,"LastQuantity":0.0467,"PrevCls":971.01,"Volume":6.9446,"Volume24H":7.1426,"Timestamp":1486043433389,"ExecutionLimitDown":848.09,"ExecutionLimitUp":1147.41}}'
-        symbol = ccs.btccusd.Symbol(ccs.constants.BTC, ccs.constants.USD)
         self.ticker = ccs.btccusd.public.response.Ticker(self.json, symbol)
 
     def testLow(self):

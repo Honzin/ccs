@@ -38,8 +38,8 @@ class Ticker(abstract.Ticker):
 ##################################################################################
 
 class Trade(abstract.Trade):
-    def type(self):
-        return constants.UNDEFINED
+    def timestamp(self):
+        return float(str(self._data[self._mapping[constants.TIMESTAMP]])[:-3])
 
 
 # [{"date":"1480926246","price":5336.46,"amount":0.15,"tid":"104899229"},{"date":"1480926247","price":5336.53,"amount":11,"tid":"104899230"}]

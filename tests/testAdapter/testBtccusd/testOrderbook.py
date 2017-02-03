@@ -9,17 +9,11 @@ import time
 
 class Valid(unittest.TestCase):
     def setUp(self):
-        self.stock = ccs.constants.BTCCPRO
-        self.base = ccs.constants.XBT
-        self.quote = ccs.constants.CNY
-        symbol = ccs.btccpro.Symbol(self.base, self.quote)
-
-        self.tz = datetime.timezone.utc
-
-        self.json = '{"asks":[[6929,22],[6930,25]],"bids":[[6910.3,11],[6903,4]],"date":1486145574689}'
-        self.orderbook = ccs.btccpro.public.response.OrderBook(self.json, symbol)
-
-        self.m = ccs.btccpro.public.response
+        self.stock = ccs.constants.BTCCUSD
+        self.base = ccs.constants.BTC
+        self.quote = ccs.constants.USD
+        self.orderbook = ccs.orderbook(self.stock, self.base, self.quote)
+        self.m = ccs.btccusd.public.response
         #time.sleep(3)
 
     def testAsks(self):
@@ -52,3 +46,11 @@ class Valid(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+
+
+
+
+
+

@@ -25,7 +25,7 @@ from . import response
 # TICKER                                                                         #
 ##################################################################################
 
-def ticker(symbol="xbtcny"):
+def ticker(symbol="XBTCNY"):
     """
         This function provide detailed data of give market. This informations offer high level overview of the current states on the market. It is actual price, best bids and asks etc.
 
@@ -63,7 +63,7 @@ def ticker(symbol="xbtcny"):
 
         :Example:
                 >>> import ccs
-                >>> response = ccs.btccpro.public.ticker("xbtcny")
+                >>> response = ccs.btccpro.public.ticker("XBTCNY")
                 >>> print(response)
                 {
                     "ticker":
@@ -111,7 +111,7 @@ def ticker(symbol="xbtcny"):
 # TRADE HISTORY                                                                  #
 ##################################################################################
 
-def tradeHistory(symbol="xbtcny", limit=100, since=None, sincetype=None):
+def tradeHistory(symbol="XBTCNY", limit=100, since=None, sincetype=None):
     """
         This function provide history of trades.
 
@@ -153,7 +153,7 @@ def tradeHistory(symbol="xbtcny", limit=100, since=None, sincetype=None):
 
         :Example:
                 >>> import ccs
-                >>> response = ccs.btccpro.public.tradeHistory("xbtcny")
+                >>> response = ccs.btccpro.public.tradeHistory("XBTCNY")
                 >>> print(response)
                 [
                     {
@@ -181,15 +181,15 @@ def tradeHistory(symbol="xbtcny", limit=100, since=None, sincetype=None):
 
                 Example of GET request:
 
-                * https://pro-data.btcc.com/data/pro/historydata
+                * https://pro-data.btcc.com/data/pro/historydata?symbol=XBTCNY
 
-                * https://pro-data.btcc.com/data/pro/historydata?limit=10
+                * https://pro-data.btcc.com/data/pro/historydata?limit=100&symbol=XBTCNY
 
-                * https://pro-data.btcc.com/data/pro/historydata?since=10
+                * https://pro-data.btcc.com/data/pro/historydata?since=10&symbol=XBTCNY
 
-                * https://pro-data.btcc.com/data/pro/historydata?since=10&limit=10
+                * https://pro-data.btcc.com/data/pro/historydata?since=10&limit=10&symbol=XBTCNY
 
-                * https://pro-data.btcc.com/data/pro/historydata?since=1456757387645&limit=10&sincetype=time
+                * https://pro-data.btcc.com/data/pro/historydata?since=1456757387645&limit=10&sincetype=time&symbol=XBTCNY
     """
     s = __name__.split(".")[1]  # stock name
     r = sys._getframe().f_code.co_name  # request name is same as name of function
@@ -216,7 +216,7 @@ def tradeHistory(symbol="xbtcny", limit=100, since=None, sincetype=None):
 # ORDERBOOK                                                                      #
 ##################################################################################
 
-def orderbook(symbol="xbtcny", limit=None):
+def orderbook(symbol="XBTCNY", limit=None):
     """
         This function provide lists of orders for sell and buy.
 
@@ -258,7 +258,7 @@ def orderbook(symbol="xbtcny", limit=None):
 
         :Example:
                 >>> import ccs
-                >>> response = ccs.btccpro.public.orderbook("xbtcny")
+                >>> response = ccs.btccpro.public.orderbook("XBTCNY")
                 >>> print(response)
                 {
                     "asks":
@@ -285,9 +285,9 @@ def orderbook(symbol="xbtcny", limit=None):
 
                 Example of GET request:
 
-                * https://pro-data.btcc.com/data/pro/orderbook
+                * https://pro-data.btcc.com/data/pro/orderbook?symbol=XBTCNY
 
-                * https://pro-data.btcc.com/data/pro/orderbook?limit=5
+                * https://pro-data.btcc.com/data/pro/orderbook?limit=5&symbol=XBTCNY
     """
 
     s = __name__.split(".")[1]  # stock name

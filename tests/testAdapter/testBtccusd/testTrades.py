@@ -8,9 +8,9 @@ import time
 
 class Valid(unittest.TestCase):
     def setUp(self):
-        self.stock = ccs.constants.BTCCPRO
-        self.base = ccs.constants.XBT
-        self.quote = ccs.constants.CNY
+        self.stock = ccs.constants.BTCCUSD
+        self.base = ccs.constants.BTC
+        self.quote = ccs.constants.USD
         self.trades = ccs.trades(self.stock, self.base, self.quote)
         self.m = ccs.btccusd.public.response
         #time.sleep(3)

@@ -1,5 +1,6 @@
 import unittest
 import ccs
+import datetime
 import time
 
 ####################################################################################################################
@@ -8,18 +9,32 @@ import time
 
 class Valid(unittest.TestCase):
     def setUp(self):
-        self.stock = ccs.constants.BTCCPRO
-        self.base = ccs.constants.XBT
-        self.quote = ccs.constants.CNY
+        self.stock = ccs.constants.BTCCUSD
+        self.base = ccs.constants.BTC
+        self.quote = ccs.constants.USD
         self.trades = ccs.trades(self.stock, self.base, self.quote)
-        self.m = ccs.btccusd.public.response
+        self.trade = self.trades[0]
+        self.types = [ccs.constants.BUY, ccs.constants.SELL, ccs.constants.UNDEFINED]
         #time.sleep(3)
 
-    def testLen(self):
-        self.assertIsInstance(len(self.trades), int)
 
-    def testGetItem(self):
-        self.assertIsInstance(self.trades[0], self.m.Trade)
+    def testTid(self):
+        self.assertIsInstance(self.trade.tid(), float)
+
+    def testPrice(self):
+        self.assertIsInstance(self.trade.price(), float)
+
+    def testAmount(self):
+        self.assertIsInstance(self.trade.amount(), float)
+
+    def testType(self):
+        self.assertIn(self.trade.type(), self.types)
+
+    def testTimestamp(self):
+        self.assertIsInstance(self.trade.timestamp(), float)
+
+    def testDt(self):
+        self.assertIsInstance(self.trade.dt(), datetime.datetime)
 
     def testStock(self):
         self.assertEqual(self.trades.stock(), self.stock)

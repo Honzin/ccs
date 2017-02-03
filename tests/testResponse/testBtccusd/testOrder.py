@@ -12,11 +12,11 @@ class Valid(unittest.TestCase):
         self.stock = ccs.constants.BTCCUSD
         self.base = ccs.constants.BTC
         self.quote = ccs.constants.USD
+        symbol = ccs.btccusd.Symbol(self.base, self.quote)
 
         self.tz = datetime.timezone.utc
 
         self.json = '{"asks":[[1038.97,0.188],[1049,0.5]],"bids":[[981.09,0.0004],[981.08,0.004]],"date":1486140539483}'
-        symbol = ccs.btccusd.Symbol(self.base, self.quote)
         self.orderbook = ccs.btccusd.public.response.OrderBook(self.json, symbol)
 
         self.ordersA = self.orderbook.asks()

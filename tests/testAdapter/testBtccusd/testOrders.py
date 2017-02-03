@@ -3,7 +3,7 @@ import ccs
 import time
 
 ####################################################################################################################
-# BTCCUSD                                                                                                          #
+# BTCCPRO                                                                                                          #
 ####################################################################################################################
 
 class Valid(unittest.TestCase):
@@ -11,19 +11,15 @@ class Valid(unittest.TestCase):
         self.stock = ccs.constants.BTCCUSD
         self.base = ccs.constants.BTC
         self.quote = ccs.constants.USD
-        symbol = ccs.btccusd.Symbol(self.base, self.quote)
-
-        self.json = '{"asks":[[1038.97,0.188],[1049,0.5]],"bids":[[981.09,0.0004],[981.08,0.004]],"date":1486140539483}'
-        self.orderbook = ccs.btccusd.public.response.OrderBook(self.json, symbol)
-
+        self.orderbook = ccs.orderbook(self.stock, self.base, self.quote)
         self.ordersA = self.orderbook.asks()
         self.ordersB = self.orderbook.bids()
         self.m = ccs.btccusd.public.response
         # time.sleep(3)
 
     def testLen(self):
-        self.assertEqual(len(self.ordersA), 2)
-        self.assertEqual(len(self.ordersB), 2)
+        self.assertIsInstance(len(self.ordersA), int)
+        self.assertIsInstance(len(self.ordersB), int)
 
     def testGetItem(self):
         self.assertIsInstance(self.ordersA[0], self.m.Order)
