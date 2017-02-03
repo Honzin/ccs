@@ -66,7 +66,6 @@ Unificated Trades
 trades = ccs.trades(stock, cur1, cur2)
 
 # Available atributes and methods
-
 len(trades)
 str(trades)
 
@@ -87,7 +86,6 @@ Unificated Orderbook
 orderbook = ccs.orderbook(stock, cur1, cur2)
 
 # Available atributes and methods
-
 for order in orderbook.asks():
   order.price()
   order.amount()
