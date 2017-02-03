@@ -29,14 +29,15 @@ class Ticker(abstract.Ticker):
     def _load(self, raw):
         self._data = json.loads(raw)["ticker"]
 
+    def timestamp(self):
+        return float(str(self._data[self._mapping[constants.TIMESTAMP]])[:-3])
 
 ##################################################################################
 # TRADES                                                                         #
 ##################################################################################
 
 class Trade(abstract.Trade):
-    def type(self):
-        return constants.UNDEFINED
+    pass
 
 
 # [{"date":"1480926246","price":5336.46,"amount":0.15,"tid":"104899229"},{"date":"1480926247","price":5336.53,"amount":11,"tid":"104899230"}]
@@ -57,11 +58,11 @@ class Order(abstract.Order):
 
 class Orders(abstract.Orders):
     def __getitem__(self, item):
-        return Order( self._data[item])
+        return Order( self._data[item], self._symbol)
 
 class OrderBook(abstract.OrderBook):
     def loadAsks(self):
-        self._asks = Orders( self._data["asks"])
+        self._asks = Orders( self._data["asks"], self._symbol)
 
     def loadBids(self):
-        self._bids = Orders( self._data["bids"])
+        self._bids = Orders( self._data["bids"], self._symbol)

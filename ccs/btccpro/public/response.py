@@ -29,6 +29,9 @@ class Ticker(abstract.Ticker):
     def _load(self, raw):
         self._data = json.loads(raw)["ticker"]
 
+    def timestamp(self):
+        return float(str(self._data[self._mapping[constants.TIMESTAMP]])[:-3])
+
 
 ##################################################################################
 # TRADES                                                                         #

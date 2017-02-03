@@ -31,7 +31,7 @@ packages = ["ccs",
             "ccs.poloniex.public"
             ]
 
-classifiers=[
+classifiers = [
     # How mature is this project? Common values are
     #   3 - Alpha
     #   4 - Beta
@@ -40,10 +40,7 @@ classifiers=[
 
     # Indicate who your project is intended for
     'Intended Audience :: Developers',
-    'Topic :: Software Development :: Build Tools',
-
-    # Pick your license as you wish (should match "license" above)
-     'License :: OSI Approved :: AGPL-3.0',
+    # 'Topic :: Software Development :: Build Tools',
 
     # Specify the Python versions you support here. In particular, ensure
     # that you indicate whether you support Python 2, Python 3 or both.
@@ -62,6 +59,6 @@ setup(
     author_email    = 'xsedaj00@gmail.com',
     url             = 'https://github.com/Honzin/ccs',
     download_url    = 'https://github.com/Honzin/ccs/tarball/0.1.3',
-    keywords        = ['bitfinex', 'bitstamp', 'bittrex', "btcc", "btce", "bter", "cexio", "kraken", "okcoin", "poloniex", "api", "crypto", "coin", "stock", "market"],
+    keywords        = ['bitfinex', 'bitstamp', 'bittrex', "btcc", "btce", "bter", "cexio", "kraken", "okcoin", "poloniex", "api", "crypto", "coin", "stock", "market", "unification"],
     classifiers     = classifiers,
 )
