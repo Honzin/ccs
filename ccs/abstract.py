@@ -74,6 +74,15 @@ class Base:
         schema = self._cfg.schema[self.stock()][constants.UNIFICATED + "_" + self.method()]
         jsonschema.validate(json.loads(raw), schema)
 
+    def timestamp(self):
+        pass
+
+    def dt(self, tz=None):
+        pass
+
+    def utc(self):
+        return datetime.datetime.utcfromtimestamp(self.timestamp())
+
 ##################################################################################
 # TICKER                                                                         #
 ##################################################################################
@@ -264,7 +273,7 @@ class Trade(Base):
         # ctypes Method
         revers = {v: k for k, v in self._mapping.items()}
         j = {v: getattr(self, v)() for k, v in revers.items()}
-        j[constants.SYMBOL] = self._symbol
+        #j[constants.SYMBOL] = self._symbol
         j[constants.STOCK] = self.stock()
         j[constants.METHOD] = self.method()
         return json.dumps(j)
