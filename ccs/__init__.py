@@ -72,3 +72,13 @@ def trades(stock, cur1, cur2, limit=None, direction=None):
 
 def orderbook(stock, cur1, cur2, limit=None):
     return eval(stock + ".Adapter.orderbook('" + cur1 + "','" + cur2 + "')")
+
+
+def symbols(stock):
+    return eval(stock + ".Adapter.symbols()")
+
+def currencies(stock):
+    return eval(stock + ".Adapter.currencies()")
+
+
+

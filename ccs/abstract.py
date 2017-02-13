@@ -20,6 +20,7 @@ import datetime
 import inspect
 import sys
 import jsonschema
+import inspect
 
 from . import constants
 from . import initials
@@ -30,14 +31,7 @@ from . import core
 ##################################################################################
 
 class Base:
-    """
-    Base like hell
-    """
     def stock(self):
-        """
-        Stock like hell
-        :return:
-        """
         return type(self).__module__.split(".")[1]
 
     def method(self):
@@ -421,28 +415,104 @@ class OrderBook(Base):
 # SYMBOL                                                                         #
 ##################################################################################
 
+# class Symbol:
+#     def __init__(self, cur1, cur2):
+#         self._cur1 = cur1
+#         self._cur2 = cur2
+#
+#     def base(self):
+#         return self.normalize(self._cur1)
+#
+#     def quote(self):
+#         return self.normalize(self._cur2)
+#
+#     def normalize(self, cur):
+#         return cur.lower().strip()
+#
+#     def original(self):
+#         pass
+#
+#     def unificated(self):
+#         return self.normalize(self._cur1) + ":" + self.normalize(self._cur2)
+#
+#     def __str__(self):
+#         pass
+#
+
 class Symbol:
-    def __init__(self, cur1, cur2):
-        self._cur1 = cur1
-        self._cur2 = cur2
+    def __init__(self, base, quote):
+        self._base  = Currency(base)
+        self._quote = Currency(quote)
 
-    def cur1(self):
-        return self.normalize(self._cur1)
+    def base(self):
+        return self._base
 
-    def cur2(self):
-        return self.normalize(self._cur2)
-
-    def normalize(self, cur):
-        return cur.lower().strip()
-
-    def original(self):
-        pass
+    def quote(self):
+        return self._quote
 
     def unificated(self):
-        return self.normalize(self._cur1) + ":" + self.normalize(self._cur2)
+        return self.base().unificated() + ":" + self.quote().unificated()
+
+    def native(self):
+        pass
+
+    @staticmethod
+    def split(basequote):
+        pass
+
+    def stock(self):
+        return type(self).__module__.split(".")[1]
 
     def __str__(self):
+        s  = "Symbol[stock="+self.stock()+"]\n"
+        s += "\tBase  :: " + str(self.base()) + "\n"
+        s += "\tQuote :: " + str(self.quote()) + "\n"
+
+        return s
+
+
+
+class Currency:
+    def __init__(self, c):
+        self.c = c
+
+    def unificated(self):
+        # TODO not effective
+        return self.c.strip().lower()
+
+    def native(self):
         pass
+
+    def __str__(self):
+        s  = ""
+        s += "Currency[unificated="+self.unificated()+",native="+self.native()+",stock="+self.stock()+"]"
+        return s
+
+    def stock(self):
+        return type(self).__module__.split(".")[1]
+
+
+    def __hash__(self):
+        si = ""
+        for c in self.unificated():
+            si += str(ord(c))
+        return int(si)
+
+    def __eq__(self, other):
+        if self.unificated() == other.unificated():
+            return True
+        return False
+
+# class Symbol:
+#     def __init__(self, base, quote):
+#         # self._base  = Currency(base)
+#         # self._quote = Currency(quote)
+#
+#     def base(self):
+#         pass
+#
+#     def quote(self):
+#         pass
 
 
 ##################################################################################
@@ -463,9 +533,17 @@ class Adapter:
         pass
 
     @staticmethod
-    def symbols(stock):
+    def symbols():
         pass
 
-    @staticmethod
-    def currencies(stock):
-        pass
+    # TODO Tahle metoda je skoro vzdy stejna a mela by se dedit. Na to je, ale potreba dynamic stack inspect pro ADAPTER.symbols()
+    # @staticmethod
+    # def currencies():
+    #     symbols = Adapter.symbols()
+    #     r = []
+    #
+    #     for s in symbols:
+    #         r.append(s.base())
+    #         r.append(s.quote())
+    #
+    #     return set(r)

@@ -17,43 +17,84 @@ __maintainer__ = "Jan Seda"
 __email__ = ""
 __status__ = "Production"
 
+
+import json
+
 from .. import abstract
 from . import public
 from . import configuration
 
 
-# btcusd
+##################################################################################
+# SYMBOL                                                                         #
+##################################################################################
 
 class Symbol(abstract.Symbol):
-    def original(self):
-        return self.cur1() + self.cur2()
+    def __init__(self, base, quote):
+        self._base  = Currency(base)
+        self._quote = Currency(quote)
 
+
+    def native(self):
+        return self.base().native() + self.quote().native()
+
+    @staticmethod
+    def split(basequote):
+        r = basequote.strip()
+        b = r[:3]
+        q = r[3:]
+        return Symbol(b, q)
+
+
+##################################################################################
+# CURRENCY                                                                       #
+##################################################################################
+
+class Currency(abstract.Currency):
+    def native(self):
+        return self.c.strip().lower()
+
+
+##################################################################################
+# ADAPTER                                                                        #
+##################################################################################
 
 class Adapter(abstract.Adapter):
     @staticmethod
     def ticker(cur1, cur2):
         symbol = Symbol(cur1, cur2)
-        s = symbol.original()
+        s = symbol.native()
         return public.response.Ticker(public.ticker(s), symbol)
 
     @staticmethod
     def trades(cur1, cur2, limit=None, direction=None):
         symbol = Symbol(cur1, cur2)
-        s = symbol.original()
+        s = symbol.native()
         return public.response.Trades(public.trades(s), symbol)
 
     @staticmethod
     def orderbook(cur1, cur2, limit=None):
         symbol = Symbol(cur1, cur2)
-        s = symbol.original()
+        s = symbol.native()
         return public.response.OrderBook(public.orderbook(s), symbol)
 
+    @staticmethod
+    def symbols():
+        symbols = json.loads(public.symbols())
+        r = []
+        for bq in symbols:
+            r.append(Symbol.split(bq))
 
-# class Handler(abstract.Handler):
-#     def _setAdapter(self):
-#         self._adapter = Adapter()
+        return r
 
+    # TODO predelat- pouzededit z abstract. Viz abstract.Adapter
+    @staticmethod
+    def currencies():
+        symbols = Adapter.symbols()
+        r = []
 
+        for s in symbols:
+            r.append(s.base())
+            r.append(s.quote())
 
-
-# SYMBOl
+        return set(r)

@@ -9,10 +9,10 @@ class Symbol(abstract.Symbol):
         self._cur1 = cur1
         self._cur2 = cur2
 
-    def cur1(self):
+    def base(self):
         return self.normalize(self._cur1)
 
-    def cur2(self):
+    def quote(self):
         return self.normalize(self._cur2)
 
     def normalize(self, cur):
