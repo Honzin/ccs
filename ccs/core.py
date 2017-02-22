@@ -1,5 +1,5 @@
 # -*- coding: utf8 -*-
-
+import cfscrape
 # TODO
 """
 ...
@@ -23,12 +23,17 @@ import logging
 import importlib
 
 def get(hostname, request, header, compression, timeout):
-    header['Accept-Encoding'] = compression
-    con = http.client.HTTPSConnection(hostname, timeout=timeout)
-    con.request(constants.GET, request, "", header)
-    response = con.getresponse()
-    data = decompress(response.read(), compression, header['Accept-Charset'])
-    con.close()
+    data = None
+    if hostname == Configuration().hostnames[constants.BITFINEX]:
+        scraper = cfscrape.create_scraper()
+        data = scraper.get("http://" + hostname + request).content.decode("utf-8")
+    else:
+        header['Accept-Encoding'] = compression
+        con = http.client.HTTPSConnection(hostname, timeout=timeout)
+        con.request(constants.GET, request, "", header)
+        response = con.getresponse()
+        data = decompress(response.read(), compression, header['Accept-Charset'])
+        con.close()
 
     logger = logging.getLogger(logerName())
 
