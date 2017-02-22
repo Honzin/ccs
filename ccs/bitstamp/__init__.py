@@ -77,7 +77,7 @@ class Adapter(abstract.Adapter):
 
     @staticmethod
     def symbols():
-        return [Symbol.split("btcusd"), Symbol.split("btceur")]
+        return [Symbol.split("btcusd"), Symbol.split("btceur"), Symbol.split("xrpusd"), Symbol.split("xrpeur"), Symbol.split("xrpbtc")]
 
     # TODO predelat- pouzededit z abstract. Viz abstract.Adapter
     @staticmethod
@@ -91,5 +91,12 @@ class Adapter(abstract.Adapter):
 
         return set(r)
 
+
+    def fees(self):
+        d = {}
+        d["maker"] = 0.0025
+        d["taker"] = 0.0025
+
+        return d
 
 

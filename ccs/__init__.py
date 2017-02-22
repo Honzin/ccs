@@ -80,5 +80,8 @@ def symbols(stock):
 def currencies(stock):
     return eval(stock + ".Adapter.currencies()")
 
+def fees(stock):
+    return eval(stock + ".Adapter.fees()")
+
 
 

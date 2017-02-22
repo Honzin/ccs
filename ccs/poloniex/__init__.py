@@ -99,3 +99,10 @@ class Adapter(abstract.Adapter):
             r.append(s.quote())
 
         return set(r)
+
+    def fees(self):
+        d = {}
+        d["maker"] = 0.0015
+        d["taker"] = 0.0025
+
+        return d
